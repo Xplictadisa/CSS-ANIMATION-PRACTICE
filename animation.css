@@ -1,0 +1,290 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding-bottom: 100px;
+}
+
+/*
+.stack-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 320px;
+  height: 500px;
+  position: relative;
+  overflow: scroll;
+  scrollbar-width: none;
+  padding: 15px;
+}
+
+.title {
+  margin: 10px
+}
+
+.box {
+  width: 280px;
+  height: 50px;
+  box-shadow: -1px 3px 5px rgb(219, 216, 216);
+  margin: 0;
+  flex-shrink: 0;
+  text-align: center;
+  border-radius: 5px;
+  margin-bottom: 0;
+  margin-top: 0;
+  background-color: white;
+}
+
+.box1, .box2, .box3, .box4, .box5,
+.box6, .box7, .box8, .box9, .box10 {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  opacity: 0.5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.box1 {
+  animation: box .5s ease-in 6.4s;
+  animation-fill-mode: forwards;
+}
+
+.box2 {
+  animation: box .4s ease-in 5.8s;
+  animation-fill-mode: forwards;
+}
+
+.box3 {
+  animation: box .4s ease-in 5.2s;
+  animation-fill-mode: forwards;
+}
+
+.box4 {
+  animation: box .4s ease-in 4.6s;
+  animation-fill-mode: forwards;
+}
+
+.box5 {
+  animation: box .4s ease-in 4s;
+  animation-fill-mode: forwards;
+}
+
+.box6 {
+  animation: box .4s ease-in 3.4s;
+  animation-fill-mode: forwards;
+}
+
+.box7 {
+  animation: box .4s ease-in 2.8s;
+  animation-fill-mode: forwards;
+}
+
+.box8 {
+  animation: box .4s ease-in 2.2s;
+  animation-fill-mode: forwards;
+}
+
+.box9 {
+  animation: box .4s ease-in 1.6s;
+  animation-fill-mode: forwards;
+}
+
+.box10 {
+  animation: box .4s ease-in 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes box {
+  to {
+    width: 280px;
+    height: 50px;
+    opacity: 1;
+    margin-bottom: 20px;
+  }
+}
+*/
+
+
+/* SOME OTHER */ 
+
+.container {
+  padding: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  position: relative;
+  border: 1px solid green;
+  overflow: hidden;
+  background-color: rgb(199, 197, 197);
+}
+
+
+.box {
+  width: 250px;
+  height: 300px;
+  background-color: white;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  z-index: 2;
+}
+
+.moving {
+  background-color: gold;
+  padding: 10px;
+  box-sizing: content-box;
+  position: absolute;
+  top: 0; 
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+  transition: transform .1s ease, opacity .2s ease-in
+}
+
+.box1:hover ~ .moving,
+.box2:hover ~ .moving,
+.box3:hover ~ .moving,
+.box4:hover ~ .moving{
+  transform: translate(var(--left), var(--top));
+  opacity: 1;
+}
+
+/* .box2:hover ~ .moving{
+  opacity: 1;
+  transform: translate(280px, 0);
+}
+
+.box3:hover ~ .moving {
+  opacity: 1;
+  transform: translate(560px, 0);
+}
+
+.box4:hover ~ .moving {
+  opacity: 1;
+  transform: translate(840px, 0);
+}  */
+
+
+.container2 {
+  position: relative;
+  margin: 50px 100px;
+  width: 200px;
+  height: 300px;
+}
+
+.container2 .child {
+  width: 100%;
+  height: 100%;
+  border: 1px solid green;
+  background-color: red;
+  z-index: 2;
+  border-radius: 8px;
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.container2::after {
+  content: '';
+  width: 200px;
+  height: 300px;
+  position: absolute;
+  background-image: conic-gradient(from var(--angle), transparent 70%, blue, transparent);
+  padding: 5px;
+  z-index: -1;
+  position: absolute;
+  animation: rotation 5s linear 0s infinite normal;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 8px;
+}
+
+@keyframes rotation {
+  0% {--angle: 0deg }
+  100% {--angle: 360deg}
+}
+
+
+.textShadow {
+  color: white;
+  text-shadow: 2px 2px 5px rgba(20, 19, 19, 0.637);
+}
+
+.ld-cnt, .ld-cnt2 {
+  margin-bottom: 20px;
+  width: 100px;
+  height: 100px;
+  background-color: gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.loading {
+  width: 50px;
+  height: 50px;
+  /* background: green; */
+  transform: translate(0deg);
+  background-color: gray;
+  border-radius: 50%;
+  /* animation: load 2s ease infinite; */
+  /* position: relative; */
+  z-index: 50;
+}
+
+@property --angle2 {
+  syntax: '<angle>';
+  initial-value: 200deg;
+  inherits: false;
+}
+
+.ld-cnt::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(0deg);
+  background: conic-gradient(from 0deg, white var(--angle2), gray 0deg, gray);
+  height: 50px;
+  width: 50px;
+  padding: 4px;
+  z-index: 10;
+  border-radius: 50%;
+  animation: load 2s ease infinite; 
+}
+
+@keyframes load {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+    --angle2: 200deg
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+    --angle2: 5deg
+  }
+}
+
+.loading2 {
+  width: 50px;
+  height: 50px;
+  border-top: 3px solid blue;
+  border-right: 3px solid blue;
+  border-bottom: 3px solid blue;
+  border-left: 3px solid white;
+  border-radius: 50%;
+  animation: rotate2 2s ease infinite;
+}
+
+@keyframes rotate2 {
+  to {
+    transform: rotate(360deg);
+  }
+}
