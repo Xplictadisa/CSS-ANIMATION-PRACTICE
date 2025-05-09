@@ -231,12 +231,9 @@ body {
 .loading {
   width: 50px;
   height: 50px;
-  /* background: green; */
   transform: translate(0deg);
   background-color: gray;
   border-radius: 50%;
-  /* animation: load 2s ease infinite; */
-  /* position: relative; */
   z-index: 50;
 }
 
